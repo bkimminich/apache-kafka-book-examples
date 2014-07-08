@@ -1,0 +1,1 @@
+Fixed Windows batch scripts for Kafka 0.8.1 from https://github.com/HCanber/kafka
