@@ -1,5 +1,5 @@
-Fixed and updated sample implementations from the book "Apache Kafka"
-=====================================================================
+Fixed and updated code examples from the book "Apache Kafka"
+============================================================
 * Updated to Apache Kafka 0.8.1.1
 * Configuration optimized for usage on Windows machines
 * Windows batch scripts fixed (taken from https://github.com/HCanber/kafka by @HCanber)
@@ -48,7 +48,7 @@ Multithreaded Consumer for Multipartition Topics (Chapter 6, Page 50ff.)
 ------------------------------------------------------------------------
 1. Launch multi-broker Kafka cluster and create topic `test` as described in step 1-6 of __Java Producer with Message Partitioning__
 2. From another command line or your IDE run [MultiThreadHLConsumer](/src/test/kafka/consumer/MultiThreadHLConsumer.java) with topic and number of threads as argument: `java MultiThreadHLConsumer test 4`
-3. From another command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with same topic as argument: `java MultiBrokerProducer test`
-4. Ten messages starting with _Message from thread (...)_ should appear in the log of the __MultiThreadHLConsumer__
+3. From another command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with same topic as argument: `java MultiBrokerProducer test` (Note: You must start producing messages within 10sec after starting the consumer class, otherwise the consumer will shut down)
+4. Ten messages starting with _Message from thread (...)_ should appear in the log of the __MultiThreadHLConsumer__ spread among the four threads
 
 [![endorse](https://api.coderwall.com/bkimminich/endorsecount.png)](https://coderwall.com/bkimminich)
