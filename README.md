@@ -32,23 +32,23 @@ Java Producer with Message Partitioning (Chapter 5, Page 37ff.)
 5. Open a third command line in your Kafka installation folder
 6. Launch second Kafka broker: `.\bin\windows\kafka-server-start.bat .\config\server-2.properties`
 7. Open a fourth command line in your Kafka installation folder
-8. Create a topic: `.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 2 --partitions 4 --topic test`
-9. Start a console consumer for that topic: `.\bin\windows\kafka-console-consumer.bat --zookeeper localhost:2181 --topic test --from-beginning`
-10. From a fifth command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with topic as argument: `java MultiBrokerProducer test`
-11. Ten messages starting with _This message is for key (...)_ should appear in the console consumer's log
+8. Create a topic: `.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 2 --partitions 4 --topic kafkatest`
+9. Start a console consumer for that topic: `.\bin\windows\kafka-console-consumer.bat --zookeeper localhost:2181 --topic kafkatest --from-beginning`
+10. From a fifth command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with topic as argument: `java MultiBrokerProducer kafkatest`
+11. Ten messages starting with _This message is for key - (...)_ should appear in the console consumer's log
 
 Simple High Level Java Consumer (Chapter 6, Page 47ff.)
 -------------------------------------------------------
-1. Launch multi-broker Kafka cluster and create topic `test` as described in step 1-8 of __Java Producer with Message Partitioning__
-2. From another command line or your IDE run [SimpleHLConsumer](/src/test/kafka/consumer/SimpleHLConsumer.java) with topic as argument: `java SimpleHLConsumer test`
-3. From another command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with same topic as argument: `java MultiBrokerProducer test`
-4. Ten messages starting with _This message is for key (...)_ should appear in the log of the __SimpleHLConsumer__ 
+1. Launch multi-broker Kafka cluster and create topic `kafkatest` as described in step 1-8 of __Java Producer with Message Partitioning__
+2. From another command line or your IDE run [SimpleHLConsumer](/src/test/kafka/consumer/SimpleHLConsumer.java) with topic as argument: `java SimpleHLConsumer kafkatest`
+3. From another command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with same topic as argument: `java MultiBrokerProducer kafkatest`
+4. Ten messages starting with _This message is for key - (...)_ should appear in the log of the __SimpleHLConsumer__ 
 
 Multithreaded Consumer for Multipartition Topics (Chapter 6, Page 50ff.)
 ------------------------------------------------------------------------
-1. Launch multi-broker Kafka cluster and create topic `test` as described in step 1-8 of __Java Producer with Message Partitioning__
-2. From another command line or your IDE run [MultiThreadHLConsumer](/src/test/kafka/consumer/MultiThreadHLConsumer.java) with topic and number of threads as argument: `java MultiThreadHLConsumer test 4`
-3. From another command line or your IDE run [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) with same topic as argument: `java MultiBrokerProducer test` (Note: You must start producing messages within 10sec after starting the consumer class, otherwise the consumer will shut down)
-4. Ten messages starting with _Message from thread (...)_ should appear in the log of the __MultiThreadHLConsumer__ spread among the four threads
+1. Launch multi-broker Kafka cluster and create topic `kafkatest` as described in step 1-8 of __Java Producer with Message Partitioning__
+2. From another command line or your IDE run [MultiThreadHLConsumer](/src/test/kafka/consumer/MultiThreadHLConsumer.java) with topic and number of threads as argument: `java MultiThreadHLConsumer kafkatest 4`
+4. From another command line continuously produce messages by running [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) several times in a row: `java MultiBrokerProducer kafkatest` (Note: You must start producing messages within 10sec after starting the consumer class, otherwise the consumer will shut down)
+5. Messages starting with _Message from thread (...)_ should appear in the log of the __MultiThreadHLConsumer__ spread among the four threads
 
 [![endorse](https://api.coderwall.com/bkimminich/endorsecount.png)](https://coderwall.com/bkimminich)

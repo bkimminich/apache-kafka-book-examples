@@ -21,13 +21,13 @@ public class MultiBrokerProducer {
     }
 
     public static void main(String[] args) {
-        MultiBrokerProducer sp = new MultiBrokerProducer();
+        new MultiBrokerProducer();
         Random random = new Random();
         String topic = args[0];
         for (long i = 0; i < 10; i++) {
             Integer key = random.nextInt(255);
             String msg = "This message is for key - " + key;
-            producer.send(new KeyedMessage<>(topic, msg));
+            producer.send(new KeyedMessage<Integer, String>(topic, msg));
         }
         producer.close();
     }

@@ -18,9 +18,11 @@ public class SimpleProducer {
     }
 
     public static void main(String[] args) {
+        new SimpleProducer();
         String topic = args[0];
         String msg = args[1];
-        producer.send(new KeyedMessage<>(topic, msg));
+        KeyedMessage<Integer, String> data = new KeyedMessage<>(topic, msg);
+        producer.send(data);
         producer.close();
     }
 }
