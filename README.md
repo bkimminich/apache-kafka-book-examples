@@ -50,5 +50,3 @@ Multithreaded Consumer for Multipartition Topics (Chapter 6, Page 50ff.)
 2. From another command line or your IDE run [MultiThreadHLConsumer](/src/test/kafka/consumer/MultiThreadHLConsumer.java) with topic and number of threads as argument: `java MultiThreadHLConsumer kafkatest 4`
 4. From another command line continuously produce messages by running [MultiBrokerProducer](/src/test/kafka/MultiBrokerProducer.java) several times in a row: `java MultiBrokerProducer kafkatest` (Note: You must start producing messages within 10sec after starting the consumer class, otherwise the consumer will shut down)
 5. Messages starting with _Message from thread (...)_ should appear in the log of the __MultiThreadHLConsumer__ spread among the four threads
-
-[![endorse](https://api.coderwall.com/bkimminich/endorsecount.png)](https://coderwall.com/bkimminich)
